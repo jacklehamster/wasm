@@ -1,5 +1,3 @@
-export class Hello {
-  static hello() {
-    return "Hello World!";
-  }
-}
+import { add, addFromFile } from "./webassembly-executor";
+
+export { add, addFromFile };

@@ -5,9 +5,9 @@
   <body>
   </body>
   <script type="module">
-    import { Hello } from './dist/index.js';
+    import { add } from './dist/index.js';
 
     const h1 = document.body.appendChild(document.createElement("h1"));
-    h1.textContent = Hello.hello();
+    add(10, 20, "hello-world.wasm").then(result => h1.textContent = result);
   </script>
 </html>

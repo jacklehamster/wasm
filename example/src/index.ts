@@ -1,3 +1,3 @@
-import { Hello } from "bun-template";
+import { add } from "@dobuki/wasm";
 
-export { Hello };
+export { add };
