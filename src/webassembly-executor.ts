@@ -2,11 +2,9 @@ import { wasmBrowserInstantiate } from "./hello-world";
 // import asc from "assemblyscript/asc";
 
 let wasmModule: WebAssembly.WebAssemblyInstantiatedSource | undefined = undefined;
-export const add = async (a: number, b: number, wasmUrl: string = "../hello-world.wasm") => {
+export const add = async (a: number, b: number, wasmUrl: string = "hello-world.wasm") => {
   // Instantiate our wasm module
   wasmModule = wasmModule ?? await wasmBrowserInstantiate(wasmUrl);
-
-  console.log("exports", wasmModule.instance.exports);
 
   // Call the Add function export from wasm, save the result
   const add = wasmModule.instance.exports.add as Function;
