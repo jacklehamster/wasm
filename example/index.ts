@@ -1,14 +1,25 @@
+import express from 'express';
 import { addFromFile } from "@dobuki/wasm";
-import Bao from "baojs";
-import serveStatic from "serve-static-bun";
+import path from 'path';
 
-const app = new Bao();
+const app = express();
+const port = 3000;
+
 //console.log(await add(10, 15, "hello-world.wasm"));
 
 addFromFile(12, 13, "hello-world.wasm").then(result => console.log(result));
 
-//application/wasm
-app.get("/*any", serveStatic("/", { middlewareMode: "bao" }));
+// Middleware to set Content-Type for .wasm files
+app.use((req, res, next) => {
+  if (req.path.endsWith('.wasm')) {
+    res.setHeader('Content-Type', 'application/wasm');
+  }
+  next();
+});
 
-const server = app.listen({ port: 3000 });
-console.log(`Listening on http://localhost:${server.port}`);
+// Serve static files
+app.use(express.static(path.join(__dirname, '')));
+
+app.listen(port, () => {
+  console.log(`Listening on http://localhost:${port}`);
+});

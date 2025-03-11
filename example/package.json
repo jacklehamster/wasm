@@ -8,7 +8,9 @@
     "build-icon": "png-to-ico ../icon.png > favicon.ico"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@types/express": "^5.0.0",
+    "bun-types": "^1.2.5",
+    "express": "^4.21.2"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

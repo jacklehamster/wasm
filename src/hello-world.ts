@@ -12,7 +12,7 @@ export const wasmBrowserInstantiate = async (wasmModuleUrl: string, importObject
 
   //  console.log(">>", wasmModuleUrl);
   // Check if the browser supports streaming instantiation
-  if (false && WebAssembly.instantiateStreaming) {
+  if (WebAssembly.instantiateStreaming) {
     // Fetch the module, and instantiate it as it is downloading
     response = await WebAssembly.instantiateStreaming(
       fetch(wasmModuleUrl),

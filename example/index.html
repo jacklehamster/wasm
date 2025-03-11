@@ -1,13 +1,17 @@
-<html>
+<html lang="en">
   <head>
-    <title>Bun Template</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Assembly</title>
   </head>
-  <body>
-  </body>
+  <body></body>
   <script type="module">
-    import { add } from './dist/index.js';
+    import { add } from "./dist/index.js";
 
     const h1 = document.body.appendChild(document.createElement("h1"));
-    add(10, 20, "hello-world.wasm").then(result => h1.textContent = result);
+    add(10, 20, "hello-world.wasm").then((result) => {
+      console.log(result);
+      h1.textContent = result;
+    });
   </script>
 </html>

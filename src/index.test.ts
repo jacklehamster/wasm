@@ -7,7 +7,7 @@ const path = require("path");
 
 describe('add', () => {
     it('add two numbers', async () => {
-        const p = path.dirname(module.path) + "/hello-world.wasm"
+        const p = path.dirname(module.path) + "/../hello-world.wasm";
         expect(await addFromFile(13, 14, p)).toEqual(13 + 14);
     });
 });

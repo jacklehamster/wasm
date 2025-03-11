@@ -1,19 +1,23 @@
 // /Users/vincent/wasm/example/node_modules/@dobuki/wasm/dist/index.js
-var z = async (A, g) => {
-  let k = undefined;
+var E = async (k, g) => {
+  let v = undefined;
   if (!g)
     g = { env: { abort: () => console.log("Abort!") } };
-  return k = await (async () => {
-    const n = await fetch(A).then((v) => v.arrayBuffer());
-    return WebAssembly.instantiate(n, g);
-  })(), k;
+  if (WebAssembly.instantiateStreaming)
+    v = await WebAssembly.instantiateStreaming(fetch(k), g);
+  else
+    v = await (async () => {
+      const C = await fetch(k).then((D) => D.arrayBuffer());
+      return WebAssembly.instantiate(C, g);
+    })();
+  return v;
 };
-var q = undefined;
-var D = async (A, g, k = "../hello-world.wasm") => {
-  q = q ?? await z(k);
-  const F = q.instance.exports.add;
-  return F(A, g);
+var z = undefined;
+var G = async (k, g, v = "../hello-world.wasm") => {
+  z = z ?? await E(v), console.log("exports", z.instance.exports);
+  const q = z.instance.exports.add;
+  return q(k, g);
 };
 export {
-  D as add
+  G as add
 };
